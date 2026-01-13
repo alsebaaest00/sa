@@ -27,7 +27,7 @@
   - Run linters: `poetry run ruff check .`
   - Check formatting: `poetry run black --check .`
   - Run tests: `poetry run pytest -q`
-- CI workflow: `.github/workflows/python-ci.yml` performs the same steps during PRs and pushes to `main`.
+- CI workflow: `.github/workflows/python-ci.yml` performs the same steps during PRs and pushes to `main`. It also runs dependency review and uploads test coverage to Codecov (requires adding a Codecov token secret if desired for private repos).
 
 ## Project-specific conventions ⚙️
 - Package code lives under `src/` and tests under `tests/`.

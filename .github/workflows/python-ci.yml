@@ -29,6 +29,13 @@ jobs:
       - name: Format check (black)
         run: |
           poetry run black --check .
-      - name: Run tests
+      - name: Run tests (with coverage)
         run: |
-          poetry run pytest -q
+          poetry run pytest -q --cov=src --cov-report=xml
+      - name: Upload coverage to Codecov
+        uses: codecov/codecov-action@v4
+        with:
+          files: coverage.xml
+          fail_ci_if_error: true
+      - name: Dependency review
+        uses: github/dependency-review-action@v2
