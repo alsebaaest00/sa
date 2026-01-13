@@ -5,7 +5,3 @@ __pycache__/
 dist/
 build/
 *.egg-info
-
-# Coverage
-.coverage
-coverage.xml

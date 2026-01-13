@@ -20,21 +20,12 @@ jobs:
           python -m pip install --upgrade pip
           pip install poetry
           poetry install --no-interaction
-      - name: Run pre-commit checks
+      - name: Lint (ruff)
         run: |
-          poetry run pre-commit run --all-files
-      - name: Run tests (with coverage)
+          poetry run ruff check .
+      - name: Format check (black)
         run: |
-          poetry run pytest -q --cov=src --cov-report=xml
-
-      - name: Check Codecov token
-        if: ${{ !secrets.CODECOV_TOKEN }}
+          poetry run black --check .
+      - name: Run tests
         run: |
-          echo "Codecov token not set; skipping upload. To enable uploads, add CODECOV_TOKEN to repository secrets."
-
-      - name: Upload coverage to Codecov
-        if: ${{ secrets.CODECOV_TOKEN }}
-        uses: codecov/codecov-action@v4
-        with:
-          files: coverage.xml
-          fail_ci_if_error: true
+          poetry run pytest -q
