@@ -27,7 +27,11 @@
   - Install pre-commit hooks: `poetry run pre-commit install`
   - Run pre-commit locally: `poetry run pre-commit run --all-files` (this runs `black` and `ruff` via hooks)
   - Run tests: `poetry run pytest -q --cov=src --cov-report=xml`
+<<<<<<< HEAD
 - CI workflow: `.github/workflows/python-ci.yml` runs pre-commit checks, tests with coverage, dependency review, and uploads coverage to Codecov (requires adding a Codecov token secret if desired for private repos).
+=======
+- CI workflow: `.github/workflows/python-ci.yml` runs pre-commit checks, tests with coverage, and uploads coverage to Codecov (requires adding a `CODECOV_TOKEN` secret if the repo is private).
+>>>>>>> 64b3057 (chore(scaffold): add minimal Python scaffold, CI, and MIT license)
 
 ## Project-specific conventions ⚙️
 - Package code lives under `src/` and tests under `tests/`.
@@ -59,12 +63,18 @@ If anything in this file is unclear or you'd like more examples (e.g., alternati
 =======
 >>>>>>> 8eedf81 (docs(copilot-instructions): document Python scaffold, CI, and local dev commands)
 
+---
+If anything in this file is unclear or you'd like more examples (e.g., alternative scaffolding for Node or Go), tell me which sections to expand or any repo-specific policies you want enforced. 🙏
+
 ## Safety & assumptions ⚠️
 - If repository intent is ambiguous, **stop and ask**—do not add implementation that could conflict with the owner's goals.
 - Avoid adding third-party services or secrets. If a service is necessary, document required secrets and request them explicitly from maintainers.
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 64b3057 (chore(scaffold): add minimal Python scaffold, CI, and MIT license)
 ---
 If anything in this file is unclear or you'd like more examples (e.g., alternative scaffolding for Node or Go), tell me which sections to expand or any repo-specific policies you want enforced. 🙏
 =======
@@ -74,7 +84,10 @@ If anything in this file is unclear or you'd like more examples (e.g., alternati
 ---
 If anything in this file is unclear or incomplete, please tell me which sections to expand or any repo-specific policies you want enforced. 🙏
 >>>>>>> 2d0fe14 (chore(scaffold): add minimal Python scaffold, CI, and MIT license)
+<<<<<<< HEAD
 =======
 ---
 If anything in this file is unclear or you'd like more examples (e.g., alternative scaffolding for Node or Go), tell me which sections to expand or any repo-specific policies you want enforced. 🙏
 >>>>>>> 8eedf81 (docs(copilot-instructions): document Python scaffold, CI, and local dev commands)
+=======
+>>>>>>> 64b3057 (chore(scaffold): add minimal Python scaffold, CI, and MIT license)
