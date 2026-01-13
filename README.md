@@ -26,3 +26,12 @@ poetry run pytest -q --cov=src --cov-report=xml
 poetry run pre-commit install
 poetry run pre-commit run --all-files
 ```
+
+## Codecov (optional)
+
+If you'd like coverage uploads to Codecov (useful for protected branches), add a repository secret named `CODECOV_TOKEN`:
+
+- Go to GitHub → Settings → **Secrets and variables** → **Actions** → **New repository secret**.
+- Set **Name** = `CODECOV_TOKEN` and **Value** = the token provided by Codecov for this repository.
+
+The CI workflow will skip uploads if `CODECOV_TOKEN` is not set.

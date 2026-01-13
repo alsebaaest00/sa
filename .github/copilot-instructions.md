@@ -27,7 +27,7 @@
   - Install pre-commit hooks: `poetry run pre-commit install`
   - Run pre-commit locally: `poetry run pre-commit run --all-files` (this runs `black` and `ruff` via hooks)
   - Run tests: `poetry run pytest -q --cov=src --cov-report=xml`
-- CI workflow: `.github/workflows/python-ci.yml` runs pre-commit checks, tests with coverage, and uploads coverage to Codecov (add a `CODECOV_TOKEN` secret if the repo is private).
+- CI workflow: `.github/workflows/python-ci.yml` runs pre-commit checks and tests with coverage. To enable Codecov uploads, add a repository secret named `CODECOV_TOKEN` via **Settings → Secrets and variables → Actions → New repository secret**. The workflow will skip uploads if `CODECOV_TOKEN` is not set.
 
 ## Project-specific conventions ⚙️
 - Package code lives under `src/` and tests under `tests/`.
@@ -146,7 +146,7 @@ If anything in this file is unclear or you'd like more examples (e.g., alternati
   - Install pre-commit hooks: `poetry run pre-commit install`
   - Run pre-commit locally: `poetry run pre-commit run --all-files` (this runs `black` and `ruff` via hooks)
   - Run tests: `poetry run pytest -q --cov=src --cov-report=xml`
-- CI workflow: `.github/workflows/python-ci.yml` runs pre-commit checks and tests with coverage; a dependency-review step was previously added but removed because it couldn't be resolved in the runner. Add a `CODECOV_TOKEN` secret if the repo is private to enable Codecov uploads.
+- CI workflow: `.github/workflows/python-ci.yml` runs pre-commit checks and tests with coverage; a dependency-review step was previously added but removed because it couldn't be resolved in the runner. To enable Codecov uploads, add a repository secret named `CODECOV_TOKEN` via **Settings → Secrets and variables → Actions → New repository secret**. The workflow will skip uploads if `CODECOV_TOKEN` is not set.
 
 ## Project-specific conventions ⚙️
 - Package code lives under `src/` and tests under `tests/`.
