@@ -31,5 +31,3 @@ jobs:
         with:
           files: coverage.xml
           fail_ci_if_error: true
-      - name: Dependency review
-        uses: github/dependency-review-action@v2

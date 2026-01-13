@@ -16,9 +16,8 @@ poetry install --no-interaction
 - Run linters and tests:
 
 ```bash
-poetry run ruff check .
-poetry run black --check .
-poetry run pytest -q
+poetry run pre-commit run --all-files
+poetry run pytest -q --cov=src --cov-report=xml
 ```
 
 - Install pre-commit hooks locally:
