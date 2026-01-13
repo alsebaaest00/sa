@@ -1,6 +1,9 @@
 # sa
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> c233db6 (chore(advanced-quality): add coverage, Codecov upload, release-drafter, editorconfig, dependency review, badges)
 [![CI](https://github.com/alsebaaest00-hue/sa/actions/workflows/python-ci.yml/badge.svg)](https://github.com/alsebaaest00-hue/sa/actions/workflows/python-ci.yml) [![Codecov](https://codecov.io/gh/alsebaaest00-hue/sa/branch/main/graph/badge.svg)](https://codecov.io/gh/alsebaaest00-hue/sa) [![Dependabot Status](https://img.shields.io/badge/dependabot-enabled-brightgreen)](https://github.com/alsebaaest00-hue/sa/network/updates) [![pre-commit](https://img.shields.io/badge/pre--commit-enabled-brightgreen)](https://pre-commit.com/) [![pre-commit.ci status](https://results.pre-commit.ci/badge/github/alsebaaest00-hue/sa/main.svg)](https://results.pre-commit.ci/latest/github/alsebaaest00-hue/sa/main) [![License](https://img.shields.io/github/license/alsebaaest00-hue/sa)](LICENSE)
 
 Minimal scaffold created as an example Python project. If you would like a different language, license, or CI, please respond to issue #1 with your preferences.
