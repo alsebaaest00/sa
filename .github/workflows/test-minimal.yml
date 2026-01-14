@@ -1,0 +1,16 @@
+name: Minimal Test
+
+on:
+  push:
+    branches: [ '**' ]
+
+jobs:
+  echo:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out
+        uses: actions/checkout@v4
+      - name: Print hello
+        run: |
+          echo "Hello from minimal workflow"
+          echo "Listing workspace:" && ls -la
