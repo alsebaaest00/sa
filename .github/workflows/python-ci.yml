@@ -29,7 +29,7 @@ jobs:
           echo "=== End diagnostics ===" >> ci-diag.txt
 
       - name: Upload diagnostics artifact
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v6
         with:
           name: ci-diagnostics
           path: ci-diag.txt
