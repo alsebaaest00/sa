@@ -18,7 +18,7 @@ requests = "^2.31"
 numpy = "^1.26"
 gtts = "^2.5"
 
-[tool.poetry.dev-dependencies]
+[tool.poetry.group.dev.dependencies]
 pytest = "^7.0"
 pytest-cov = "^4.0"
 black = "^24.0"
