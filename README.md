@@ -44,21 +44,118 @@ poetry run streamlit run src/sa/ui/app.py
 
 ### الاستخدام البرمجي
 
+#### مثال بسيط - توليد صورة
 ```python
-from sa.generators import ImageGenerator, AudioGenerator
-from sa.utils import SuggestionEngine
+from sa.generators import ImageGenerator
+
+# إنشاء مولد الصور
+img_gen = ImageGenerator(api_key="your_replicate_token")
 
 # توليد صورة
+image_url = img_gen.generate("منظر طبيعي خلاب عند الغروب")
+print(f"الصورة: {image_url}")
+```
+
+#### مثال متقدم - استخدام الميزات الجديدة 🎯
+
+```python
+from sa.generators import VideoGenerator, ImageGenerator, AudioGenerator
+
+# 1. توليد فيديو مع التخزين المؤقت والتقدم
+video_gen = VideoGenerator(api_key="your_replicate_token")
+
+def on_progress(message):
+    print(f"📹 {message}")
+
+video_url = video_gen.generate_from_text(
+    "قطة تلعب في حديقة مشمسة",
+    duration=5,
+    use_cache=True,  # استخدام الذاكرة المؤقتة
+    progress_callback=on_progress  # متابعة التقدم
+)
+
+# عرض الإحصائيات
+stats = video_gen.get_statistics()
+print(f"✅ Generated: {stats['generated']}, Cached: {stats['cached']}")
+
+# 2. توليد صور متعددة وتحميلها
 img_gen = ImageGenerator(api_key="your_replicate_token")
-images = img_gen.generate("منظر طبيعي خلاب")
 
-# تحويل نص إلى صوت
-audio_gen = AudioGenerator(api_key="your_elevenlabs_key")
-audio = audio_gen.generate_speech("مرحباً بك")
+# التحقق من النص أولاً
+validation = img_gen.validate_prompt("غروب جميل")
+if validation["valid"]:
+    # توليد مع cache
+    urls = [img_gen.generate("غروب جميل", use_cache=True) for _ in range(3)]
+    
+    # تحميل دفعة واحدة
+    local_paths = img_gen.batch_download(urls, "outputs/images/")
+    print(f"📥 تم تحميل {len(local_paths)} صورة")
 
-# الحصول على اقتراحات
+# 3. تحويل نص إلى صوت مع التحقق
+audio_gen = AudioGenerator(elevenlabs_key="your_key")
+
+# التحقق من النص
+text = "مرحباً بكم في منصة SA للذكاء الاصطناعي"
+validation = audio_gen.validate_text(text)
+print(f"📊 الكلمات: {validation['word_count']}, المدة المقدرة: {validation['estimated_duration']}s")
+
+# توليد مع متابعة
+audio_path = audio_gen.generate_speech(
+    text,
+    voice="Rachel",
+    use_cache=True,
+    progress_callback=lambda msg: print(f"🎤 {msg}")
+)
+
+# عرض إحصائيات Fallback
+stats = audio_gen.get_statistics()
+print(f"🔄 Fallback used: {stats['fallback_used']} times")
+```
+
+#### مثال: مشروع فيديو كامل
+```python
+from sa.generators import VideoGenerator, AudioGenerator
+from sa.utils import SuggestionEngine
+
+# 1. تحسين الفكرة
 engine = SuggestionEngine(api_key="your_openai_key")
-improved = engine.improve_prompt("قطة جميلة")
+improved_prompt = engine.improve_prompt("قصة عن المستقبل", media_type="video")
+
+# 2. توليد الفيديو
+video_gen = VideoGenerator(api_key="your_replicate_token")
+video_url = video_gen.generate_from_text(improved_prompt, use_cache=True)
+
+# 3. إضافة التعليق الصوتي
+audio_gen = AudioGenerator(elevenlabs_key="your_elevenlabs_key")
+narration = audio_gen.generate_speech(
+    "هذه رؤية للمستقبل حيث التكنولوجيا تخدم الإنسانية",
+    use_cache=True
+)
+
+# 4. دمج الصوت مع الفيديو (إذا كان محلياً)
+# final_video = video_gen.add_audio("video.mp4", narration, "final.mp4")
+```
+
+#### نصائح الاستخدام الأمثل 💡
+
+```python
+# ✅ استخدم التحقق قبل التوليد
+validation = generator.validate_prompt("your text")
+if not validation["valid"]:
+    print(f"❌ مشاكل: {validation['issues']}")
+    print(f"💡 اقتراحات: {validation['suggestions']}")
+
+# ✅ استخدم الـ cache للطلبات المكررة
+result = generator.generate("same prompt", use_cache=True)
+
+# ✅ راقب الإحصائيات لتحسين الأداء
+stats = generator.get_statistics()
+cache_hit_rate = stats['cached'] / (stats['generated'] + stats['cached'])
+print(f"📈 Cache hit rate: {cache_hit_rate:.1%}")
+
+# ✅ امسح الـ cache عند الحاجة
+cleared = generator.clear_cache()
+print(f"🗑️ تم مسح {cleared} عنصر من الذاكرة")
 ```
 
 ## 📖 التوثيق
