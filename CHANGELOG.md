@@ -5,6 +5,20 @@ All notable changes to the SA Platform project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.0.1] - 2026-01-19 🔧
+
+### 🐛 Fixed
+
+#### Test Suite Improvements
+- **Resolved Python data type issues** - improved test success rate from 83.8% to 94.2%
+- Fixed cache TTL timing issues in `test_cache.py`
+- Updated API mocking patterns to module-level variables in `test_api_advanced.py`
+- Corrected parameter naming inconsistencies (media_type → content_type) in `test_suggestions_advanced.py`
+- Implemented proper Streamlit session state mocking in `test_ui_coverage.py`
+- Updated expected template count from 5 to 15 in `test_templates.py`
+- **Result**: 308/327 tests passing (up from 280/334)
+- Remaining 19 test failures require real API keys for external services (Replicate, ElevenLabs, OpenAI)
+
 ## [2.0.0] - 2026-01-19 🚀
 
 ### 🎯 Major Platform Upgrade - All 5 Improvements
