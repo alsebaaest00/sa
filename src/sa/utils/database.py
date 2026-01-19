@@ -31,8 +31,7 @@ class Database:
         cursor = conn.cursor()
 
         # Projects table
-        cursor.execute(
-            """
+        cursor.execute("""
             CREATE TABLE IF NOT EXISTS projects (
                 id INTEGER PRIMARY KEY AUTOINCREMENT,
                 name TEXT NOT NULL,
@@ -43,12 +42,10 @@ class Database:
                 videos TEXT,
                 audio TEXT
             )
-        """
-        )
+        """)
 
         # Generations table (لتتبع العمليات)
-        cursor.execute(
-            """
+        cursor.execute("""
             CREATE TABLE IF NOT EXISTS generations (
                 id INTEGER PRIMARY KEY AUTOINCREMENT,
                 project_id INTEGER,
@@ -59,12 +56,10 @@ class Database:
                 created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
                 FOREIGN KEY (project_id) REFERENCES projects(id)
             )
-        """
-        )
+        """)
 
         # Statistics table
-        cursor.execute(
-            """
+        cursor.execute("""
             CREATE TABLE IF NOT EXISTS statistics (
                 id INTEGER PRIMARY KEY AUTOINCREMENT,
                 date TEXT,
@@ -74,8 +69,7 @@ class Database:
                 total_time REAL DEFAULT 0,
                 UNIQUE(date)
             )
-        """
-        )
+        """)
 
         conn.commit()
         conn.close()

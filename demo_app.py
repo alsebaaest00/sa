@@ -14,16 +14,14 @@ st.set_page_config(
 
 st.title("🎨 SA - منصة تحويل النصوص (وضع التجربة)")
 
-st.info(
-    """
+st.info("""
 ⚠️ **وضع التجربة**: لا يتطلب مفاتيح API
 
 للحصول على الميزات الكاملة، احصل على مفاتيح API من:
 - Replicate: https://replicate.com/account/api-tokens
 - OpenAI: https://platform.openai.com/api-keys
 - ElevenLabs: https://elevenlabs.io (اختياري)
-"""
-)
+""")
 
 st.divider()
 
@@ -101,8 +99,7 @@ with tab2:
 with tab3:
     st.header("ℹ️ معلومات المنصة")
 
-    st.markdown(
-        """
+    st.markdown("""
     ### 🎯 الميزات الرئيسية:
 
     #### مع مفاتيح API:
@@ -154,8 +151,7 @@ with tab3:
     ---
 
     ### ✅ حالة النظام:
-    """
-    )
+    """)
 
     col1, col2, col3 = st.columns(3)
 

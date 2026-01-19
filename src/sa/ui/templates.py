@@ -185,11 +185,9 @@ def show_best_practices():
     """Display best practices guide"""
     st.subheader("✨ أفضل الممارسات")
 
-    st.markdown(
-        """
+    st.markdown("""
     اتبع هذه الممارسات لضمان جودة المشاريع:
-    """
-    )
+    """)
 
     practices_to_show = ["naming", "organization", "quality"]
 
