@@ -1,5 +1,5 @@
 The "poetry.dev-dependencies" section is deprecated and will be removed in a future version. Use "poetry.group.dev.dependencies" instead.
-2026-01-16 02:31:30.185 
+2026-01-16 02:31:30.185
 Warning: the config option 'server.enableCORS=false' is not compatible with
 'server.enableXsrfProtection=true'.
 As a result, 'server.enableCORS' is being overridden to 'true'.
@@ -10,7 +10,7 @@ To do so, we must specify allowable origins, which places a restriction on
 cross-origin resource sharing.
 
 If cross origin resource sharing is required, please disable server.enableXsrfProtection.
-            
+
 
   You can now view your Streamlit app in your browser.
 

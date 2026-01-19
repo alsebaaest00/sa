@@ -1,7 +1,7 @@
 """Projects and statistics management for Streamlit UI"""
 
 import streamlit as st
-from datetime import datetime
+
 from sa.utils import project_manager
 
 

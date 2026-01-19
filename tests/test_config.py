@@ -1,6 +1,5 @@
 """Tests for configuration"""
 
-import pytest
 from sa.utils.config import Config, config
 
 

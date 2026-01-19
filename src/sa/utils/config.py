@@ -1,8 +1,8 @@
 """Configuration management for the application"""
 
 import os
-from typing import Optional
 from dataclasses import dataclass
+
 from dotenv import load_dotenv
 
 # Load environment variables
@@ -14,9 +14,9 @@ class Config:
     """Application configuration"""
 
     # API Keys
-    openai_api_key: Optional[str] = None
-    replicate_api_key: Optional[str] = None
-    elevenlabs_api_key: Optional[str] = None
+    openai_api_key: str | None = None
+    replicate_api_key: str | None = None
+    elevenlabs_api_key: str | None = None
 
     # Paths
     output_dir: str = "outputs"
@@ -34,12 +34,8 @@ class Config:
     def __post_init__(self):
         """Load values from environment if not provided"""
         self.openai_api_key = self.openai_api_key or os.getenv("OPENAI_API_KEY")
-        self.replicate_api_key = self.replicate_api_key or os.getenv(
-            "REPLICATE_API_TOKEN"
-        )
-        self.elevenlabs_api_key = self.elevenlabs_api_key or os.getenv(
-            "ELEVENLABS_API_KEY"
-        )
+        self.replicate_api_key = self.replicate_api_key or os.getenv("REPLICATE_API_TOKEN")
+        self.elevenlabs_api_key = self.elevenlabs_api_key or os.getenv("ELEVENLABS_API_KEY")
 
         # Create output directories
         os.makedirs(self.output_dir, exist_ok=True)
@@ -56,8 +52,7 @@ class Config:
             "openai": bool(self.openai_api_key),
             "replicate": bool(self.replicate_api_key),
             "elevenlabs": bool(self.elevenlabs_api_key),
-            "paths": os.path.exists(self.output_dir)
-            and os.path.exists(self.assets_dir),
+            "paths": os.path.exists(self.output_dir) and os.path.exists(self.assets_dir),
         }
 
 

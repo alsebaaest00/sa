@@ -1,7 +1,5 @@
 """Templates and quick references for content creation"""
 
-from typing import Dict, List
-
 
 class Templates:
     """Content creation templates"""
@@ -45,7 +43,7 @@ class Templates:
     }
 
     @staticmethod
-    def get_template(template_name: str) -> Dict:
+    def get_template(template_name: str) -> dict:
         """الحصول على قالب"""
         return Templates.TEMPLATES.get(
             template_name,
@@ -59,7 +57,7 @@ class Templates:
         )
 
     @staticmethod
-    def list_templates() -> List[Dict]:
+    def list_templates() -> list[dict]:
         """قائمة بجميع القوالب"""
         return [
             {
@@ -71,11 +69,9 @@ class Templates:
         ]
 
     @staticmethod
-    def get_templates_dict() -> Dict[str, str]:
+    def get_templates_dict() -> dict[str, str]:
         """حصول على قاموس الأسماء"""
-        return {
-            template["name"]: name for name, template in Templates.TEMPLATES.items()
-        }
+        return {template["name"]: name for name, template in Templates.TEMPLATES.items()}
 
 
 class QuickReferences:
@@ -108,7 +104,7 @@ class QuickReferences:
     }
 
     @staticmethod
-    def get_prompt_suggestions(category: str) -> List[str]:
+    def get_prompt_suggestions(category: str) -> list[str]:
         """الحصول على اقتراحات النصوص"""
         return QuickReferences.PROMPTS.get(
             category,
@@ -120,7 +116,7 @@ class QuickReferences:
         )
 
     @staticmethod
-    def get_voice_info(voice: str) -> Dict:
+    def get_voice_info(voice: str) -> dict:
         """معلومات الصوت"""
         return QuickReferences.VOICE_SETTINGS.get(
             voice,
@@ -128,7 +124,7 @@ class QuickReferences:
         )
 
     @staticmethod
-    def list_voices() -> List[Dict]:
+    def list_voices() -> list[dict]:
         """قائمة الأصوات"""
         return [
             {
@@ -167,7 +163,7 @@ class ContentTips:
     }
 
     @staticmethod
-    def get_tips(content_type: str) -> List[str]:
+    def get_tips(content_type: str) -> list[str]:
         """الحصول على النصائح"""
         return ContentTips.TIPS.get(
             content_type,
@@ -209,7 +205,7 @@ class BestPractices:
     }
 
     @staticmethod
-    def get_practice(practice_type: str) -> Dict:
+    def get_practice(practice_type: str) -> dict:
         """الحصول على ممارسة"""
         return BestPractices.PRACTICES.get(
             practice_type,

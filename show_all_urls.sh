@@ -12,14 +12,14 @@ if [ "$CODESPACE_NAME" != "unknown" ]; then
     echo "📍 GitHub Codespaces Environment Detected"
     echo "────────────────────────────────────────────────────────────────────"
     echo ""
-    
+
     echo "🎨 Main Services:"
     echo "  1. Main UI:          https://${CODESPACE_NAME}-8501.${DOMAIN}"
     echo "  2. Main API:         https://${CODESPACE_NAME}-8000.${DOMAIN}"
     echo "  3. API Docs:         https://${CODESPACE_NAME}-8000.${DOMAIN}/docs"
     echo "  4. Demo App:         https://${CODESPACE_NAME}-8502.${DOMAIN}"
     echo ""
-    
+
     echo "📊 Development Tools:"
     echo "  5. Jupyter:          https://${CODESPACE_NAME}-8888.${DOMAIN}"
     echo "  6. MLflow:           https://${CODESPACE_NAME}-5000.${DOMAIN}"
@@ -27,7 +27,7 @@ if [ "$CODESPACE_NAME" != "unknown" ]; then
     echo "  8. System Monitor:   https://${CODESPACE_NAME}-8004.${DOMAIN}"
     echo "  9. Admin Dashboard:  https://${CODESPACE_NAME}-8012.${DOMAIN}"
     echo ""
-    
+
     echo "🔧 Microservices:"
     echo " 10. Metrics API:      https://${CODESPACE_NAME}-8003.${DOMAIN}"
     echo " 11. Image Service:    https://${CODESPACE_NAME}-8005.${DOMAIN}"
@@ -43,14 +43,14 @@ else
     echo "💻 Local Environment"
     echo "────────────────────────────────────────────────────────────────────"
     echo ""
-    
+
     echo "🎨 Main Services:"
     echo "  1. Main UI:          http://localhost:8501"
     echo "  2. Main API:         http://localhost:8000"
     echo "  3. API Docs:         http://localhost:8000/docs"
     echo "  4. Demo App:         http://localhost:8502"
     echo ""
-    
+
     echo "📊 Development Tools:"
     echo "  5. Jupyter:          http://localhost:8888"
     echo "  6. MLflow:           http://localhost:5000"
@@ -58,7 +58,7 @@ else
     echo "  8. System Monitor:   http://localhost:8004"
     echo "  9. Admin Dashboard:  http://localhost:8012"
     echo ""
-    
+
     echo "🔧 Microservices:"
     echo " 10. Metrics API:      http://localhost:8003"
     echo " 11. Image Service:    http://localhost:8005"

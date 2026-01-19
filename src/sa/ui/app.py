@@ -1,9 +1,11 @@
 """Streamlit web interface for the SA platform"""
 
-import streamlit as st
 import os
 from datetime import datetime
-from pathlib import Path
+
+import streamlit as st
+
+from sa.ui.templates import show_templates_and_tips
 
 # Set page config
 st.set_page_config(
@@ -15,9 +17,8 @@ st.set_page_config(
 
 # Import generators and utilities
 try:
-    from sa.generators import ImageGenerator, VideoGenerator, AudioGenerator
-    from sa.utils import config, SuggestionEngine
-    from sa.ui.templates import show_templates_and_tips
+    from sa.generators import AudioGenerator, ImageGenerator, VideoGenerator
+    from sa.utils import SuggestionEngine, config
 except ImportError:
     st.error("⚠️ خطأ في استيراد المكونات. تأكد من تثبيت جميع التبعيات.")
     st.stop()
@@ -83,15 +84,13 @@ def main():
 
         st.markdown("---")
         st.markdown("### 📚 الدليل السريع")
-        st.info(
-            """
+        st.info("""
         1. أضف مفاتيح API في الأعلى
         2. اختر نوع المحتوى من التبويبات
         3. أدخل النص أو الوصف
         4. استخدم الاقتراحات الذكية
         5. اضغط على زر التوليد
-        """
-        )
+        """)
 
     # Main tabs
     tab1, tab2, tab3, tab4, tab5, tab6 = st.tabs(
@@ -177,9 +176,7 @@ def main():
                             # Save and display images
                             timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
                             for i, img_url in enumerate(images):
-                                save_path = (
-                                    f"{config.output_dir}/image_{timestamp}_{i}.png"
-                                )
+                                save_path = f"{config.output_dir}/image_{timestamp}_{i}.png"
                                 saved = generator.download_image(img_url, save_path)
 
                                 if saved:
@@ -192,9 +189,7 @@ def main():
     with tab2:
         st.header("🎬 توليد الفيديو")
 
-        video_mode = st.radio(
-            "اختر طريقة التوليد:", ["من نص مباشر", "عرض شرائح من صور"]
-        )
+        video_mode = st.radio("اختر طريقة التوليد:", ["من نص مباشر", "عرض شرائح من صور"])
 
         if video_mode == "من نص مباشر":
             video_prompt = st.text_area(
@@ -257,9 +252,7 @@ def main():
 
         col1, col2 = st.columns(2)
         with col1:
-            voice_name = st.selectbox(
-                "اختر الصوت", ["Adam", "Bella", "Antoni", "Rachel", "Domi"]
-            )
+            voice_name = st.selectbox("اختر الصوت", ["Adam", "Bella", "Antoni", "Rachel", "Domi"])
 
         with col2:
             audio_model = st.selectbox(

@@ -11,6 +11,9 @@ replicate>=0.25
 python-dotenv>=1.0
 requests>=2.31
 numpy>=1.26
+gtts>=2.5
+fastapi>=0.109
+uvicorn[standard]>=0.27
 
 # Development dependencies
 pytest>=7.0

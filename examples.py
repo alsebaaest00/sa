@@ -1,8 +1,9 @@
 """Example scripts demonstrating SA platform usage"""
 
-from sa.generators import ImageGenerator, VideoGenerator, AudioGenerator
-from sa.utils import config, SuggestionEngine
 import os
+
+from sa.generators import AudioGenerator, ImageGenerator, VideoGenerator
+from sa.utils import SuggestionEngine, config
 
 
 def example_image_generation():
@@ -194,17 +195,17 @@ def example_complete_workflow():
 
     # Step 3: Generate narration audio
     print("\nStep 3: Generating narration...")
-    if config.elevenlabs_api_key or True:  # gTTS fallback available
-        audio_gen = AudioGenerator(config.elevenlabs_api_key)
-        narration_texts = [scene["narration"] for scene in script]
-        audio_path = f"{config.output_dir}/narration.mp3"
+    # Always try to generate audio - AudioGenerator has gTTS fallback
+    audio_gen = AudioGenerator(config.elevenlabs_api_key)
+    narration_texts = [scene["narration"] for scene in script]
+    audio_path = f"{config.output_dir}/narration.mp3"
 
-        audio = audio_gen.generate_narration_from_script(narration_texts, audio_path)
-        if audio:
-            print("✅ Narration generated")
+    audio = audio_gen.generate_narration_from_script(narration_texts, audio_path)
+    if audio:
+        print("✅ Narration generated")
     else:
         audio_path = None
-        print("⚠️ Audio generation skipped")
+        print("⚠️ Audio generation failed")
 
     # Step 4: Create video
     print("\nStep 4: Creating final video...")
@@ -212,9 +213,7 @@ def example_complete_workflow():
     final_video = f"{config.output_dir}/final_story.mp4"
 
     # Create slideshow
-    video = video_gen.create_slideshow(
-        scene_images, duration_per_image=3, output_path=final_video
-    )
+    video = video_gen.create_slideshow(scene_images, duration_per_image=3, output_path=final_video)
 
     # Add audio if available
     if video and audio_path and os.path.exists(audio_path):

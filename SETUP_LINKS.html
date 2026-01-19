@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🔗 روابط إعداد منصة SA</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+            direction: rtl;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 40px 30px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+
+        .header p {
+            font-size: 1.2em;
+            opacity: 0.9;
+        }
+
+        .content {
+            padding: 40px 30px;
+        }
+
+        .section {
+            margin-bottom: 40px;
+            padding: 25px;
+            background: #f8f9fa;
+            border-radius: 15px;
+            border-right: 5px solid #667eea;
+        }
+
+        .section h2 {
+            color: #667eea;
+            margin-bottom: 20px;
+            font-size: 1.8em;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .section h3 {
+            color: #444;
+            margin: 20px 0 10px;
+            font-size: 1.3em;
+        }
+
+        .link-card {
+            background: white;
+            padding: 20px;
+            margin: 15px 0;
+            border-radius: 10px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .link-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 20px rgba(102, 126, 234, 0.4);
+        }
+
+        .link-card h4 {
+            color: #333;
+            margin-bottom: 10px;
+            font-size: 1.2em;
+        }
+
+        .link-card p {
+            color: #666;
+            margin-bottom: 15px;
+            line-height: 1.6;
+        }
+
+        .link-button {
+            display: inline-block;
+            padding: 12px 30px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            transition: transform 0.3s;
+            margin-left: 10px;
+        }
+
+        .link-button:hover {
+            transform: scale(1.05);
+        }
+
+        .link-button.secondary {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+        }
+
+        .code-box {
+            background: #2d2d2d;
+            color: #f8f8f2;
+            padding: 20px;
+            border-radius: 10px;
+            font-family: 'Courier New', monospace;
+            margin: 15px 0;
+            overflow-x: auto;
+        }
+
+        .code-box pre {
+            margin: 0;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+
+        .status {
+            display: inline-block;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9em;
+            font-weight: bold;
+            margin-right: 10px;
+        }
+
+        .status.required {
+            background: #ffe0e0;
+            color: #d32f2f;
+        }
+
+        .status.optional {
+            background: #fff9e0;
+            color: #f57c00;
+        }
+
+        .status.free {
+            background: #e0f7e0;
+            color: #388e3c;
+        }
+
+        .checklist {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+        }
+
+        .checklist-item {
+            padding: 15px;
+            margin: 10px 0;
+            background: #f8f9fa;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .checkbox {
+            width: 24px;
+            height: 24px;
+            border: 2px solid #667eea;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 30px;
+            background: #f8f9fa;
+            color: #666;
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 1.8em;
+            }
+
+            .section {
+                padding: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🔗 روابط إعداد منصة SA</h1>
+            <p>جميع الروابط والخطوات المطلوبة لإكمال التثبيت</p>
+        </div>
+
+        <div class="content">
+            <!-- API Keys Section -->
+            <div class="section">
+                <h2>🔑 الحصول على API Keys</h2>
+
+                <div class="link-card">
+                    <span class="status required">مطلوب للصور</span>
+                    <h4>1️⃣ Replicate API Token</h4>
+                    <p>للحصول على صور عالية الجودة باستخدام نماذج Stable Diffusion وغيرها</p>
+                    <a href="https://replicate.com/signin" target="_blank" class="link-button">
+                        التسجيل في Replicate
+                    </a>
+                    <a href="https://replicate.com/account/api-tokens" target="_blank" class="link-button secondary">
+                        الحصول على Token
+                    </a>
+                    <div class="code-box">
+<pre># بعد الحصول على Token، أضفه في ملف .env:
+REPLICATE_API_TOKEN=r8_xxxxxxxxxxxxxxxxxxxxx</pre>
+                    </div>
+                </div>
+
+                <div class="link-card">
+                    <span class="status required">مطلوب للذكاء الاصطناعي</span>
+                    <h4>2️⃣ OpenAI API Key</h4>
+                    <p>لتحسين النصوص، توليد الأفكار، وإنشاء السكريبتات الذكية</p>
+                    <a href="https://platform.openai.com/signup" target="_blank" class="link-button">
+                        التسجيل في OpenAI
+                    </a>
+                    <a href="https://platform.openai.com/api-keys" target="_blank" class="link-button secondary">
+                        الحصول على API Key
+                    </a>
+                    <div class="code-box">
+<pre># أضف المفتاح في ملف .env:
+OPENAI_API_KEY=sk-xxxxxxxxxxxxxxxxxxxxx</pre>
+                    </div>
+                </div>
+
+                <div class="link-card">
+                    <span class="status optional">اختياري</span>
+                    <span class="status free">بديل مجاني متوفر</span>
+                    <h4>3️⃣ ElevenLabs API Key (اختياري)</h4>
+                    <p>لصوت عالي الجودة وطبيعي جداً. البديل المجاني: gTTS مثبت تلقائياً</p>
+                    <a href="https://elevenlabs.io/sign-up" target="_blank" class="link-button">
+                        التسجيل في ElevenLabs
+                    </a>
+                    <a href="https://elevenlabs.io/subscription" target="_blank" class="link-button secondary">
+                        الاشتراك والحصول على Key
+                    </a>
+                    <div class="code-box">
+<pre># اختياري - أضف في ملف .env إذا أردت:
+ELEVENLABS_API_KEY=xxxxxxxxxxxxxxxxxxxxxxxx
+
+# ملاحظة: يمكن ترك هذا فارغاً واستخدام gTTS المجاني</pre>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Installation Section -->
+            <div class="section">
+                <h2>📦 تثبيت البرامج المطلوبة</h2>
+
+                <h3>1. تثبيت FFmpeg (ضروري جداً)</h3>
+                <div class="code-box">
+<pre># في terminal الخاص بك:
+sudo apt update
+sudo apt install -y ffmpeg imagemagick
+
+# للتحقق من التثبيت:
+ffmpeg -version</pre>
+                </div>
+
+                <h3>2. تثبيت تبعيات Python</h3>
+                <div class="code-box">
+<pre># تثبيت جميع المكتبات المطلوبة:
+poetry install --no-interaction
+
+# أو باستخدام pip:
+pip install -r requirements.txt</pre>
+                </div>
+
+                <h3>3. إعداد ملف .env</h3>
+                <div class="code-box">
+<pre># نسخ ملف القالب:
+cp .env.example .env
+
+# تعديل الملف وإضافة المفاتيح:
+nano .env
+
+# أو استخدم أي محرر نصوص تفضله</pre>
+                </div>
+            </div>
+
+            <!-- Testing Section -->
+            <div class="section">
+                <h2>🧪 اختبار التثبيت</h2>
+
+                <div class="code-box">
+<pre># اختبار جميع المكونات:
+poetry run pytest tests/ -v
+
+# اختبار API مباشرة:
+./start_api.sh
+
+# اختبار واجهة Streamlit:
+poetry run streamlit run src/sa/ui/app.py</pre>
+                </div>
+            </div>
+
+            <!-- Checklist -->
+            <div class="section">
+                <h2>✅ قائمة التحقق</h2>
+
+                <div class="checklist">
+                    <div class="checklist-item">
+                        <input type="checkbox" class="checkbox" id="check1">
+                        <label for="check1">✓ حساب Replicate + Token جاهز</label>
+                    </div>
+                    <div class="checklist-item">
+                        <input type="checkbox" class="checkbox" id="check2">
+                        <label for="check2">✓ حساب OpenAI + API Key جاهز</label>
+                    </div>
+                    <div class="checklist-item">
+                        <input type="checkbox" class="checkbox" id="check3">
+                        <label for="check3">✓ ElevenLabs (اختياري) أو قبول استخدام gTTS</label>
+                    </div>
+                    <div class="checklist-item">
+                        <input type="checkbox" class="checkbox" id="check4">
+                        <label for="check4">✓ FFmpeg مثبت ويعمل</label>
+                    </div>
+                    <div class="checklist-item">
+                        <input type="checkbox" class="checkbox" id="check5">
+                        <label for="check5">✓ تبعيات Python مثبتة (poetry install)</label>
+                    </div>
+                    <div class="checklist-item">
+                        <input type="checkbox" class="checkbox" id="check6">
+                        <label for="check6">✓ ملف .env جاهز مع المفاتيح</label>
+                    </div>
+                    <div class="checklist-item">
+                        <input type="checkbox" class="checkbox" id="check7">
+                        <label for="check7">✓ الاختبارات تعمل بنجاح (pytest)</label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Quick Links -->
+            <div class="section">
+                <h2>🔗 روابط سريعة مفيدة</h2>
+
+                <div class="link-card">
+                    <h4>📚 التوثيق</h4>
+                    <a href="https://replicate.com/docs" target="_blank" class="link-button">
+                        Replicate Docs
+                    </a>
+                    <a href="https://platform.openai.com/docs" target="_blank" class="link-button">
+                        OpenAI Docs
+                    </a>
+                    <a href="https://elevenlabs.io/docs" target="_blank" class="link-button">
+                        ElevenLabs Docs
+                    </a>
+                </div>
+
+                <div class="link-card">
+                    <h4>💰 التسعير</h4>
+                    <a href="https://replicate.com/pricing" target="_blank" class="link-button">
+                        Replicate Pricing
+                    </a>
+                    <a href="https://openai.com/pricing" target="_blank" class="link-button">
+                        OpenAI Pricing
+                    </a>
+                    <a href="https://elevenlabs.io/pricing" target="_blank" class="link-button">
+                        ElevenLabs Pricing
+                    </a>
+                </div>
+            </div>
+
+            <!-- Help Section -->
+            <div class="section">
+                <h2>❓ تحتاج مساعدة؟</h2>
+                <p style="line-height: 1.8; font-size: 1.1em;">
+                    • إذا واجهت مشكلة في التثبيت، راجع ملف <strong>QUICKSTART.md</strong><br>
+                    • للتوثيق الكامل، راجع <strong>README.md</strong> و <strong>USAGE.md</strong><br>
+                    • لتشغيل المنصة: <code>./🚀_تشغيل_المنصة.sh</code><br>
+                    • لتشغيل API: <code>./start_api.sh</code>
+                </p>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p><strong>منصة SA للذكاء الاصطناعي</strong></p>
+            <p>تحويل النصوص إلى صور وفيديوهات وصوت 🎨🎬🎤</p>
+            <p style="margin-top: 10px; opacity: 0.7;">© 2026 - جميع الحقوق محفوظة</p>
+        </div>
+    </div>
+</body>
+</html>

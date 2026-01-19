@@ -10,9 +10,9 @@ jobs:
   test:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
       - name: Set up Python
-        uses: actions/setup-python@v4
+        uses: actions/setup-python@v6
         with:
           python-version: '3.11'
       - name: Run CI diagnostics
@@ -29,7 +29,7 @@ jobs:
           echo "=== End diagnostics ===" >> ci-diag.txt
 
       - name: Upload diagnostics artifact
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v6
         with:
           name: ci-diagnostics
           path: ci-diag.txt
@@ -48,12 +48,12 @@ jobs:
           poetry run pytest -q --cov=src --cov-report=xml
 
       - name: Check Codecov token
-        if: ${{ !secrets.CODECOV_TOKEN }}
+        if: ${{ env.CODECOV_TOKEN == '' }}
         run: |
           echo "Codecov token not set; skipping upload. To enable uploads, add CODECOV_TOKEN to repository secrets."
       - name: Upload coverage to Codecov
-        if: ${{ secrets.CODECOV_TOKEN }}
-        uses: codecov/codecov-action@v4
+        if: ${{ env.CODECOV_TOKEN != '' }}
+        uses: codecov/codecov-action@v5
         with:
           files: coverage.xml
           fail_ci_if_error: true

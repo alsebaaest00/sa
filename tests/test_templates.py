@@ -1,7 +1,6 @@
 """Tests for templates and quick references"""
 
-import pytest
-from sa.utils.templates import Templates, QuickReferences, ContentTips, BestPractices
+from sa.utils.templates import BestPractices, ContentTips, QuickReferences, Templates
 
 
 class TestTemplates:
@@ -35,7 +34,7 @@ class TestTemplates:
 
     def test_all_templates_have_required_fields(self):
         """Test all templates have required fields"""
-        for name, template in Templates.TEMPLATES.items():
+        for _name, template in Templates.TEMPLATES.items():
             assert "name" in template
             assert "description" in template
             assert "image_prompt" in template
@@ -72,7 +71,7 @@ class TestQuickReferences:
 
     def test_all_voices_have_info(self):
         """Test all voices have required info"""
-        for name, info in QuickReferences.VOICE_SETTINGS.items():
+        for _name, info in QuickReferences.VOICE_SETTINGS.items():
             assert "gender" in info
             assert "tone" in info
             assert "speed" in info
@@ -126,7 +125,7 @@ class TestBestPractices:
 
     def test_all_practices_have_tips(self):
         """Test all practices have tips"""
-        for name, practice in BestPractices.PRACTICES.items():
+        for _name, practice in BestPractices.PRACTICES.items():
             assert "description" in practice
             assert "tips" in practice
             assert len(practice["tips"]) > 0

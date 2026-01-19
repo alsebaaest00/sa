@@ -1,0 +1,30 @@
+[MASTER]
+ignore=CVS,.venv,venv,env,__pycache__,.git
+
+[MESSAGES CONTROL]
+disable=
+    import-error,
+    missing-module-docstring,
+    too-few-public-methods,
+    too-many-instance-attributes,
+    too-many-arguments,
+    too-many-positional-arguments,
+    too-many-locals,
+    too-many-branches,
+    too-many-statements,
+    broad-exception-caught,
+    duplicate-code
+
+[FORMAT]
+max-line-length=100
+good-names=i,j,k,ex,_,id,ui,app,db
+
+[DESIGN]
+max-attributes=10
+max-args=7
+max-locals=20
+max-branches=15
+max-statements=60
+
+[BASIC]
+const-rgx=(([A-Z_][A-Z0-9_]*)|(__.*__)|config)$

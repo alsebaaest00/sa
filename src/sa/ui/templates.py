@@ -1,7 +1,8 @@
 """UI for templates and quick references"""
 
 import streamlit as st
-from sa.utils.templates import Templates, QuickReferences, ContentTips, BestPractices
+
+from sa.utils.templates import BestPractices, ContentTips, QuickReferences, Templates
 
 
 def show_templates_and_tips():
@@ -39,9 +40,7 @@ def show_templates():
                 st.markdown(f"### {template['name']}")
                 st.write(f"*{template['description']}*")
 
-                if st.button(
-                    f"استخدام {template['name']}", key=f"template_{template['id']}"
-                ):
+                if st.button(f"استخدام {template['name']}", key=f"template_{template['id']}"):
                     template_data = Templates.get_template(template["id"])
                     st.session_state.template_data = template_data
                     st.session_state.selected_template = template["name"]
@@ -186,11 +185,9 @@ def show_best_practices():
     """Display best practices guide"""
     st.subheader("✨ أفضل الممارسات")
 
-    st.markdown(
-        """
+    st.markdown("""
     اتبع هذه الممارسات لضمان جودة المشاريع:
-    """
-    )
+    """)
 
     practices_to_show = ["naming", "organization", "quality"]
 

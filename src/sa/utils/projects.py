@@ -1,7 +1,7 @@
 """Project management for SA Platform"""
 
-from datetime import datetime
-from typing import Dict, List, Optional, Any
+from typing import Any
+
 from .database import db
 
 
@@ -14,18 +14,18 @@ class ProjectManager:
         return db.create_project(name, description)
 
     @staticmethod
-    def list_projects() -> List[Dict[str, Any]]:
+    def list_projects() -> list[dict[str, Any]]:
         """List all projects"""
         return db.get_projects()
 
     @staticmethod
-    def get_project(project_id: int) -> Optional[Dict[str, Any]]:
+    def get_project(project_id: int) -> dict[str, Any] | None:
         """Get project details"""
         return db.get_project(project_id)
 
     @staticmethod
     def update_project(
-        project_id: int, name: str = None, description: str = None
+        project_id: int, name: str | None = None, description: str | None = None
     ) -> None:
         """Update project"""
         db.update_project(project_id, name, description)
@@ -47,17 +47,17 @@ class ProjectManager:
         db.add_generation(project_id, gen_type, prompt, file_path, duration)
 
     @staticmethod
-    def get_generations(project_id: int) -> List[Dict[str, Any]]:
+    def get_generations(project_id: int) -> list[dict[str, Any]]:
         """Get project generations"""
         return db.get_generations(project_id)
 
     @staticmethod
-    def get_statistics(date: str = None) -> Dict[str, Any]:
+    def get_statistics(date: str | None = None) -> dict[str, Any]:
         """Get daily statistics"""
         return db.get_statistics(date)
 
     @staticmethod
-    def get_all_statistics() -> List[Dict[str, Any]]:
+    def get_all_statistics() -> list[dict[str, Any]]:
         """Get all statistics"""
         return db.get_all_statistics()
 

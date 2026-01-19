@@ -1,9 +1,9 @@
 """Utilities module"""
 
-from .config import config, Config
+from .config import Config, config
+from .database import Database, db
+from .projects import ProjectManager, project_manager
 from .suggestions import SuggestionEngine
-from .database import db, Database
-from .projects import project_manager, ProjectManager
 
 __all__ = [
     "config",

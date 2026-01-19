@@ -1,0 +1,22 @@
+INFO:     Started server process [23982]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://0.0.0.0:8000 (Press CTRL+C to quit)
+INFO:     127.0.0.1:35568 - "GET / HTTP/1.1" 200 OK
+INFO:     127.0.0.1:35574 - "GET /api/v1/health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:35588 - "GET /api/v1/config/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:35594 - "GET /api/v1/outputs HTTP/1.1" 200 OK
+INFO:sa.api.routes:Generating audio for job cb4b4c19-e989-43db-a01e-d3376f1d3b77: مرحباً بكم في منصة SA...
+INFO:httpx:HTTP Request: POST https://api.elevenlabs.io/v1/text-to-speech/Adam "HTTP/1.1 401 Unauthorized"
+Error generating speech: status_code: 401, body: {'detail': {'status': 'invalid_api_key', 'message': 'Invalid API key'}}
+INFO:     127.0.0.1:35598 - "POST /api/v1/audio/generate HTTP/1.1" 200 OK
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+INFO:openai._base_client:Retrying request to /chat/completions in 0.471764 seconds
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+INFO:openai._base_client:Retrying request to /chat/completions in 0.940781 seconds
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+Error improving prompt: Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors.', 'type': 'insufficient_quota', 'param': None, 'code': 'insufficient_quota'}}
+INFO:     127.0.0.1:35610 - "POST /api/v1/suggestions/improve HTTP/1.1" 200 OK
+INFO:     127.0.0.1:35998 - "GET /docs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53794 - "GET /api/v1/health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:38044 - "GET /api/v1/health HTTP/1.1" 200 OK
