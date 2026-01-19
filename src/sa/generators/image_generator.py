@@ -172,7 +172,7 @@ class ImageGenerator:
         width: int = 1024,
         height: int = 1024,
         num_outputs: int = 1,
-        model: str = "stability-ai/sdxl",
+        model: str = "black-forest-labs/flux-schnell",
         use_cache: bool = True,
         progress_callback: Callable[[str], None] | None = None,
     ) -> list[str]:
