@@ -19,7 +19,7 @@ numpy = "^1.26"
 gtts = "^2.5"
 
 [tool.poetry.dev-dependencies]
-pytest = "^7.0"
+pytest = "^9.0"
 pytest-cov = "^7.0"
 black = "^25.12"
 pre-commit = "^4.4"
