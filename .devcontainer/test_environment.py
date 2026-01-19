@@ -40,13 +40,9 @@ def check_python_imports():
     
     try:
         # Try importing SA modules
-        from sa.generators import ImageGenerator
+        from sa.generators import ImageGenerator, VideoGenerator, AudioGenerator
         print("✅ ImageGenerator imported successfully")
-        
-        from sa.generators import VideoGenerator
         print("✅ VideoGenerator imported successfully")
-        
-        from sa.generators import AudioGenerator
         print("✅ AudioGenerator imported successfully")
         
         from sa.utils import SuggestionEngine

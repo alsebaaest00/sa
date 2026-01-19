@@ -12,6 +12,8 @@ if [ ! -f .env ]; then
     echo "📝 Creating .env file from template..."
     cp .env.example .env
     echo "⚠️  Please update .env file with your API keys!"
+else
+    echo "ℹ️  .env file already exists, skipping creation"
 fi
 
 # Create output directories

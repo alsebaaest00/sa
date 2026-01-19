@@ -10,7 +10,7 @@ GitHub Codespaces هو بيئة تطوير سحابية كاملة تعمل في
 
 اضغط على هذا الزر:
 
-[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://github.com/codespaces/new?hide_repo_select=true&ref=main&repo=alsebaaest00/sa)
+[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/alsebaaest00/sa)
 
 أو من صفحة GitHub:
 1. اضغط على زر **Code** (الأخضر)
