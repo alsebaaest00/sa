@@ -70,7 +70,28 @@ if config.openai_api_key:
 
 @health_router.get("/health", response_model=HealthResponse)
 async def health_check():
-    """Check API health and service availability"""
+    """
+    ## فحص صحة النظام
+    
+    يتحقق من حالة API وجاهزية جميع الخدمات.
+    
+    ### Returns:
+    - `status`: حالة النظام (healthy/degraded)
+    - `services`: قائمة الخدمات المتاحة
+    
+    ### مثال على الاستجابة:
+    ```json
+    {
+        "status": "healthy",
+        "services": {
+            "image_generation": true,
+            "audio_generation": true,
+            "video_generation": true,
+            "ai_suggestions": true
+        }
+    }
+    ```
+    """
     services = {
         "image_generation": image_generator is not None,
         "audio_generation": audio_generator is not None,
@@ -97,7 +118,34 @@ async def config_status():
 
 @images_router.post("/generate", response_model=ImageGenerationResponse)
 async def generate_image(request: ImageGenerationRequest, background_tasks: BackgroundTasks):
-    """Generate an image from text description"""
+    """
+    ## توليد صورة من النص
+    
+    يستخدم AI لتحويل الوصف النصي إلى صورة عالية الجودة.
+    
+    ### المعاملات:
+    - `prompt`: النص الوصفي للصورة (مطلوب)
+    - `width`: عرض الصورة بالبكسل (512-1024، افتراضي: 512)
+    - `height`: ارتفاع الصورة (512-1024، افتراضي: 512)
+    - `num_outputs`: عدد الصور (1-4، افتراضي: 1)
+    - `guidance_scale`: قوة الالتزام بالنص (1-20، افتراضي: 7.5)
+    
+    ### أمثلة على Prompts:
+    - "beautiful sunset over ocean, vibrant colors, 8k"
+    - "cute cat playing with yarn, studio photo"
+    - "futuristic city at night, neon lights, cyberpunk"
+    
+    ### Returns:
+    - `job_id`: معرف فريد للعملية
+    - `status`: حالة التوليد (completed/failed)
+    - `image_urls`: روابط الصور المولدة
+    - `message`: رسالة حالة
+    
+    ### ملاحظات:
+    - يتطلب Replicate API token
+    - الوقت المتوقع: 10-30 ثانية
+    - الصور تُحفظ تلقائياً في `outputs/`
+    """
     if not image_generator:
         raise HTTPException(
             status_code=503,

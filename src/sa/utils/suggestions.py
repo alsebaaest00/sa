@@ -327,6 +327,177 @@ class SuggestionEngine:
         """Get the number of cached items"""
         return len(self._cache)
 
+    def get_themes(self) -> list[str]:
+        """
+        Get list of available themes for content generation
+
+        Returns:
+            List of theme names
+        """
+        return [
+            "nature",
+            "technology",
+            "space",
+            "fantasy",
+            "urban",
+            "abstract",
+            "animals",
+            "landscape",
+            "portrait",
+            "food",
+            "architecture",
+            "underwater",
+            "sci-fi",
+            "historical",
+            "sports",
+            "art",
+            "music",
+            "education",
+            "business",
+            "health",
+        ]
+
+    def generate_from_theme(self, theme: str, media_type: str = "image") -> str:
+        """
+        Generate a prompt based on a theme
+
+        Args:
+            theme: Theme name
+            media_type: Type of media (image, video, audio)
+
+        Returns:
+            Generated prompt
+        """
+        if not self.client:
+            return self._fallback_theme_prompt(theme, media_type)
+
+        try:
+            response = self.client.chat.completions.create(
+                model="gpt-3.5-turbo",
+                messages=[
+                    {
+                        "role": "system",
+                        "content": (
+                            f"Generate a creative and detailed prompt for {media_type} "
+                            f"generation based on the theme: {theme}"
+                        ),
+                    },
+                    {
+                        "role": "user",
+                        "content": f"Create a {media_type} prompt for theme: {theme}",
+                    },
+                ],
+                max_tokens=150,
+                temperature=0.8,
+            )
+            content = response.choices[0].message.content
+            return str(
+                content.strip() if content else self._fallback_theme_prompt(theme, media_type)
+            )
+        except Exception as e:
+            print(f"Error generating from theme: {e}")
+            return self._fallback_theme_prompt(theme, media_type)
+
+    def _fallback_theme_prompt(self, theme: str, media_type: str) -> str:
+        """Fallback theme-based prompt generation"""
+        templates = {
+            "nature": "Beautiful natural landscape with {theme}, vibrant colors, peaceful atmosphere",
+            "technology": "Futuristic {theme} scene, high-tech environment, modern design",
+            "space": "Cosmic {theme} view, stars and galaxies, deep space exploration",
+        }
+        template = templates.get(theme, "Creative {theme} scene, high quality, detailed")
+        return template.format(theme=theme)
+
+    def suggest_styles(self, prompt: str, media_type: str = "image") -> list[str]:
+        """
+        Suggest artistic styles for a prompt
+
+        Args:
+            prompt: Base prompt
+            media_type: Type of media
+
+        Returns:
+            List of style suggestions
+        """
+        if not self.client:
+            return self._fallback_styles(media_type)
+
+        try:
+            response = self.client.chat.completions.create(
+                model="gpt-3.5-turbo",
+                messages=[
+                    {
+                        "role": "system",
+                        "content": f"Suggest 5 artistic styles for {media_type} generation",
+                    },
+                    {
+                        "role": "user",
+                        "content": f"Suggest styles for: {prompt}",
+                    },
+                ],
+                max_tokens=100,
+                temperature=0.7,
+            )
+            content = response.choices[0].message.content
+            if content:
+                styles = [s.strip() for s in content.strip().split(",")]
+                return styles[:5]
+            return self._fallback_styles(media_type)
+        except Exception as e:
+            print(f"Error suggesting styles: {e}")
+            return self._fallback_styles(media_type)
+
+    def _fallback_styles(self, media_type: str) -> list[str]:
+        """Fallback style suggestions"""
+        styles_map = {
+            "image": ["realistic", "artistic", "anime", "oil painting", "watercolor"],
+            "video": ["cinematic", "documentary", "animated", "time-lapse", "slow-motion"],
+            "audio": ["natural", "dramatic", "calm", "energetic", "professional"],
+        }
+        return styles_map.get(media_type, ["default", "creative", "professional"])
+
+    def generate_prompts(self, theme: str, count: int = 5, media_type: str = "image") -> list[str]:
+        """
+        Generate multiple prompts for a theme
+
+        Args:
+            theme: Theme for generation
+            count: Number of prompts to generate
+            media_type: Type of media
+
+        Returns:
+            List of generated prompts
+        """
+        if not self.client:
+            return [self._fallback_theme_prompt(theme, media_type) for _ in range(count)]
+
+        try:
+            response = self.client.chat.completions.create(
+                model="gpt-3.5-turbo",
+                messages=[
+                    {
+                        "role": "system",
+                        "content": f"Generate {count} creative prompts for {media_type} generation",
+                    },
+                    {
+                        "role": "user",
+                        "content": f"Generate {count} prompts for theme: {theme}",
+                    },
+                ],
+                max_tokens=300,
+                temperature=0.8,
+            )
+            content = response.choices[0].message.content
+            if content:
+                prompts = [p.strip() for p in content.strip().split("\n") if p.strip()]
+                # Remove numbering if present
+                prompts = [p.lstrip("0123456789.-) ") for p in prompts]
+                return prompts[:count]
+            return [self._fallback_theme_prompt(theme, media_type) for _ in range(count)]
+        except Exception as e:
+            print(f"Error generating prompts: {e}")
+            return [self._fallback_theme_prompt(theme, media_type) for _ in range(count)]
+
     def validate_prompt(self, prompt: str) -> dict[str, Any]:
         """
         Validate and analyze a prompt
