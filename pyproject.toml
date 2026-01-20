@@ -17,7 +17,7 @@ pydub = "^0.25"
 replicate = "^0.25"
 python-dotenv = "^1.0"
 requests = "^2.31"
-numpy = "^1.26"
+numpy = "^2.4"
 gtts = "^2.5"
 httpx = "0.26.0"
 
