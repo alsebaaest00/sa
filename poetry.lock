@@ -473,20 +473,20 @@ files = [
 
 [[package]]
 name = "elevenlabs"
-version = "1.59.0"
+version = "2.31.0"
 description = ""
 optional = false
 python-versions = "<4.0,>=3.8"
 groups = ["main"]
 files = [
-    {file = "elevenlabs-1.59.0-py3-none-any.whl", hash = "sha256:468145db81a0bc867708b4a8619699f75583e9481b395ec1339d0b443da771ed"},
-    {file = "elevenlabs-1.59.0.tar.gz", hash = "sha256:16e735bd594e86d415dd445d249c8cc28b09996cfd627fbc10102c0a84698859"},
+    {file = "elevenlabs-2.31.0-py3-none-any.whl", hash = "sha256:163062ab3c8da274a8fa43887974658e0b670b81ab887fbf53579c29e90dd433"},
+    {file = "elevenlabs-2.31.0.tar.gz", hash = "sha256:709eca626b67e19b379a099f46af608786f269c3d8824ff1adc04749f7d8b23b"},
 ]
 
 [package.dependencies]
 httpx = ">=0.21.2"
 pydantic = ">=1.9.2"
-pydantic-core = ">=2.18.2,<3.0.0"
+pydantic-core = ">=2.18.2"
 requests = ">=2.20"
 typing_extensions = ">=4.0.0"
 websockets = ">=11.0"
@@ -2517,4 +2517,4 @@ files = [
 [metadata]
 lock-version = "2.1"
 python-versions = "^3.11"
-content-hash = "a005379ae263b7cfc18cf032bcf6b85bd06f05c48e9d66c5c6c2ddc74efbaddb"
+content-hash = "3d657dab666f1a2f11baad430e37dd2c3cb6bcca7f4b670f680981ef53ff9f26"
